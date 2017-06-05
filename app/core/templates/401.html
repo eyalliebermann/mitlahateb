@@ -1,0 +1,9 @@
+{% extends 't_error.html' %}
+{% block page_body %}
+<div class="text-center">
+    <br>
+    <h2>{{ gettext("Restricted page, please login") }}</h2>
+    <br/>
+    <a href="#" class="btn btn-lg btn-primary" onclick="auth0Login(event);">{{ gettext("Login") }}</a>
+</div>
+{% endblock %}

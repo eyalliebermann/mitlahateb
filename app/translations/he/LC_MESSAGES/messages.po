@@ -1,0 +1,124 @@
+
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-06-16 14:20+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: he_IL\n"
+"Language-Team: he_IL <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.4.0\n"
+
+#: app/admin/blueprint.py:69
+msgid "Organization"
+msgstr "ארגון"
+
+#: app/admin/blueprint.py:70
+msgid "Job"
+msgstr "עבודה"
+
+#: app/admin/blueprint.py:71
+msgid "First Name"
+msgstr "שם פרטי"
+
+#: app/admin/blueprint.py:72
+msgid "Last Name"
+msgstr "שם משפחה"
+
+#: app/admin/blueprint.py:73
+msgid "Name"
+msgstr "שם"
+
+#: app/admin/blueprint.py:74
+msgid "Description"
+msgstr "תיאור"
+
+#: app/admin/blueprint.py:75 app/admin/blueprint.py:125
+msgid "Jobs"
+msgstr "עבודות"
+
+#: app/admin/blueprint.py:76 app/admin/blueprint.py:133
+msgid "Skills"
+msgstr "כישורים"
+
+#: app/admin/blueprint.py:77
+msgid "Level"
+msgstr "הרשאה"
+
+#: app/admin/blueprint.py:78
+msgid "Is Active"
+msgstr "פעיל"
+
+#: app/admin/blueprint.py:79
+msgid "Events"
+msgstr "אירועים"
+
+#: app/admin/blueprint.py:80
+msgid "Recurring"
+msgstr "חוזר"
+
+#: app/admin/blueprint.py:81
+msgid "Start Time"
+msgstr "התחלה"
+
+#: app/admin/blueprint.py:82
+msgid "End Time"
+msgstr "סיום"
+
+#: app/admin/blueprint.py:83
+msgid "Required Skills"
+msgstr "כישורים נדרשים"
+
+#: app/admin/blueprint.py:121
+msgid "Volunteers"
+msgstr "מתנדבים"
+
+#: app/admin/blueprint.py:129
+msgid "Organizations"
+msgstr "ארגונים"
+
+#: app/core/templates/401.html:5
+msgid "Restricted page, please login"
+msgstr "על מנת לצפות בתוכן זה, אנא התחבר"
+
+#: app/core/templates/401.html:7 app/core/templates/t_app.html:29
+msgid "Login"
+msgstr "התחבר"
+
+#: app/core/templates/403.html:5
+msgid "Not authorized"
+msgstr "אין לך את הרשאות המתאימות לצפות בעמוד זה"
+
+#: app/core/templates/404.html:5
+msgid "Page not found"
+msgstr "העמוד לא קיים"
+
+#: app/core/templates/404.html:7
+msgid "Go back"
+msgstr "חזור לעמוד הבית"
+
+#: app/core/templates/t_app.html:12
+msgid "Mitlahateb"
+msgstr "מתלהטב"
+
+#: app/core/templates/t_app.html:16
+msgid "Managment"
+msgstr "ניהול"
+
+#: app/core/templates/t_app.html:24
+msgid "Profile"
+msgstr "חשבון"
+
+#: app/core/templates/t_app.html:25
+msgid "Logout"
+msgstr "התנתק"
+
+#: app/onboarding/templates/index.html:4
+msgid "This is a sample content"
+msgstr "זה תוכן לדוגמא"
+

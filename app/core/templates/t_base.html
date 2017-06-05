@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" dir="{{ locale.text_direction }}">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <link href="/static/vendor/bootstrap/bootstrap.css" rel="stylesheet">
+    <link href="/static/vendor/bootstrap/bootstrap-theme.css" rel="stylesheet">
+    {% if locale.text_direction == 'rtl' %}
+    <link href="/static/vendor/bootstrap-rtl/bootstrap-rtl.css" rel="stylesheet">
+    {% endif %}
+    <link href="/static/app.css" rel="stylesheet">
+    {% block head_tail %}{% endblock %}
+</head>
+<body>
+<div class="container">
+    {% block page_body %}{% endblock %}
+</div>
+<footer class="footer">
+    <div class="container">
+    <hr />
+    <a href="?lang=he">עברית</a>
+    &nbsp
+    &nbsp
+    <a href="?lang=en">English</a>
+    <!--
+    # TODO: activate when arabic translation will be possible
+    &nbsp
+    &nbsp
+    <a href="?lang=ar">عربي</a>
+    --!>
+    </div>
+</footer>
+<script>
+    var AUTH0_CLIENT_ID = '{{ config['AUTH0_CLIENT_ID'] }}';
+    var AUTH0_DOMAIN = '{{ config['AUTH0_DOMAIN'] }}';
+    var AUTH0_CALLBACK_URL = '{{ config['AUTH0_CALLBACK_URL'] }}';
+    var STATE = '{{ next if next is none else request.path }}';
+</script>
+<script src="/static/vendor/jquery/jquery-3.1.0.min.js"></script>
+<script src="/static/vendor/bootstrap/bootstrap.min.js"></script>
+<script src="/static/vendor/auth0/auth0.min.js"></script>
+<script src="/static/app.js"></script>
+{% block tail %}
+{% endblock %}
+</body>
+</html>

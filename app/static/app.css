@@ -1,0 +1,33 @@
+html {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+body {
+    /* see https://github.com/morteza/bootstrap-rtl/issues/125 */
+    display: none;
+
+    padding-top: 75px;
+
+    position: relative;
+    padding-bottom: 100px;
+    min-height: 100%;
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    text-align: center;
+    line-height: 10px;
+}
+
+.footer > .container > hr {
+    margin-top: 0;
+}
+
+.nav-tabs-compact > li > a {
+    padding: 8px 13px;
+}

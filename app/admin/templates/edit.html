@@ -1,0 +1,14 @@
+{% extends 'admin/model/edit.html' %}
+
+{% block body %}
+<div class="row">
+    <div class="col-xs-12">
+        {% call lib.form_tag(form) %}
+        {{ lib.render_form_fields(form, form_opts=form_opts) }}
+        <div class="form-buttons">
+            {{ lib.render_form_buttons(return_url) }}
+        </div>
+        {% endcall %}
+    </div>
+</div>
+{% endblock %}
