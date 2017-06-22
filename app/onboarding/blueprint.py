@@ -3,6 +3,7 @@ from flask_login import current_user, login_required
 
 from app.core.blueprint import volunteer_s
 from app.onboarding.forms import ProfileForm
+from REST_API_logic import User_Profile_Data
 
 onboarding_bp = Blueprint(
     name='onboarding',
@@ -32,3 +33,13 @@ def profile():
         'profile.html',
         user=current_user,
         form=form)
+
+
+@onboarding_bp.route("/API/profile_data", methods=('GET', 'POST'))
+def profile_data():
+    UPD = User_Profile_Data()
+    json_in = request.get_json()
+    if request.method == 'POST':
+        return UPD.create_update_user_profile(json_in)
+    if request.method == 'GET':
+        return UPD.get_user_profile(json_in)
