@@ -55,12 +55,20 @@ vol_to_skill_table = Table(
     Column('volunteer_id', String(64), ForeignKey('volunteer.id')),
     Column('skill_id', Integer, ForeignKey('skill.id')))
 
+vol_to_org_table = Table(
+    'vol_to_org',
+    db.Model.metadata,
+    Column('volunteer_id', String(64), ForeignKey('volunteer.id')),
+    Column('organization_id', Integer, ForeignKey('organization.id')))
+
 
 class Volunteer(db.Model, SqlalchemyUserMixin):
     __tablename__ = 'volunteer'
     name = Column(Unicode(64), nullable=False)
     jobs = relationship(Job, secondary=vol_to_job_table)
+    organizations = relationship(Organization, secondary=vol_to_org_table)
     skills = relationship(Skill, secondary=vol_to_skill_table)
+    token_id = Column(String(255), nullable=True)
 
     def __unicode__(self):
         return self.first_name + ' ' + self.last_name
