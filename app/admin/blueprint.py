@@ -97,6 +97,8 @@ class JobView(CustomView):
     model = Job
     view_level = 'user'
     edit_level = 'manager'
+    column_list = ['organization', 'name', 'required_skills']
+
 
 
 class OrganizationView(CustomView):

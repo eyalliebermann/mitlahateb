@@ -4,7 +4,7 @@ from flask import redirect, render_template, Blueprint, request, abort, session
 from flask_babelex import Babel, get_locale
 from flask_login import LoginManager, logout_user, login_user
 
-from app.core.security import SecurityService
+from app.core.core import SecurityService
 from app.core.service import VolunteerService
 from app.errors import JWTExpiredError, AppError
 
@@ -94,3 +94,8 @@ def errorhandler_403(error):
 @core_bp.app_errorhandler(404)
 def errorhandler_404(error):
     return render_template('404.html')
+
+
+@core_bp.app_errorhandler(500)
+def errorhandler_500(error):
+    return render_template('500.html')

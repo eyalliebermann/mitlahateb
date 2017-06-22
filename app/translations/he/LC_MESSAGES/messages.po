@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-06-22 10:44+0300\n"
+"POT-Creation-Date: 2017-06-22 11:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: he_IL\n"
@@ -99,9 +99,13 @@ msgstr "אין לך את הרשאות המתאימות לצפות בעמוד ז�
 msgid "Page not found"
 msgstr "העמוד לא קיים"
 
-#: app/core/templates/404.html:7
+#: app/core/templates/404.html:7 app/core/templates/500.html:7
 msgid "Go back"
 msgstr "חזור לעמוד הבית"
+
+#: app/core/templates/500.html:5
+msgid "Oops. Something went wrong"
+msgstr "משהו השתבש, אנחנו עובדים על זה ברגעים אלה"
 
 #: app/core/templates/t_app.html:12
 msgid "Mitlahateb"
@@ -123,7 +127,7 @@ msgstr "התנתק"
 msgid "This is a sample content"
 msgstr "זה תוכן לדוגמא"
 
-#: app/onboarding/templates/profile.html:49
+#: app/onboarding/templates/profile.html:48
 msgid "Save"
 msgstr "שמור"
 
