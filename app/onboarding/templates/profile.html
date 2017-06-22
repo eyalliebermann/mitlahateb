@@ -1,5 +1,54 @@
 {% extends 't_app.html' %}
 {% block page_body %}
 {{ super() }}
-{{user.name}}
+{% macro form_field(field, placeholder='') -%}
+    <div class="form-group{% if field.errors %} has-error{% endif %}">
+        <label for="{{ field.id }}" class="control-label col-md-2">
+            {{ field.label.text }}{% if field.flags.required %}<strong style="color: red;"> *</strong>{% endif %}
+        </label>
+        <div class="col-md-10">
+            {% set class_ = 'form-control' %}
+            {% if field.type == 'BooleanField' %}
+                <label class="checkbox">
+                    {{ field(class_=class_) }}
+                    {{ field.label.text|safe }}
+                </label>
+            {% elif field.type == 'QuerySelectMultipleField' %}
+                {{ field(class_='col-xs-12') }}
+            {% else %}
+                {% if field.type in ('StringField', 'TextField', 'TextAreaField', 'PasswordField') %}
+                    {% set class_ = class_ + ' input-xlarge' %}
+                {% elif field.type == 'FileField' %}
+                    {% set class_ = class_ + ' input-file' %}
+                {% endif %}
+                {{ field(class_=class_, placeholder=placeholder) }}
+            {% endif %}
+            {% if field.errors %}
+                <ul class="help-block input-errors">
+                {% for i in field.errors %}
+                    <li>{{ i }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+            {% if field.description %}
+                <p class="help-block">{{ field.description|safe }}</p>
+            {% endif %}
+        </div>
+    </div>
+{%- endmacro %}
+
+<form class="form form-horizontal" role="form" method="POST">
+    {% for field in form %}
+        {{ form_field(field) }}
+    {% endfor %}
+    <hr>
+    <div class="form-buttons">
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-2">
+            <input type="submit" class="btn btn-primary" value="{{ gettext('Save') }}" />
+        </div>
+    </div>
+
+    </div>
+</form>
 {% endblock %}
