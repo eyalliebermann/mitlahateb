@@ -43,6 +43,7 @@ def before_request_admin():
 
 
 class CustomView(ModelView):
+    model = None
     view_level = 'admin'
     edit_level = 'admin'
 

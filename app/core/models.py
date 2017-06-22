@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, Unicode, ForeignKey, Table, String
 from sqlalchemy.orm import relationship
 
-from app.core.security import SqlalchemyUserMixin
+from app.core.core import SqlalchemyUserMixin
 from app.extensions import db
 
 

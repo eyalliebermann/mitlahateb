@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-06-16 14:20+0300\n"
+"POT-Creation-Date: 2017-06-22 11:26+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: he_IL\n"
@@ -14,71 +14,72 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Generated-By: Babel 2.4.0\n"
 
-#: app/admin/blueprint.py:69
+#: app/admin/blueprint.py:70
 msgid "Organization"
 msgstr "ארגון"
 
-#: app/admin/blueprint.py:70
+#: app/admin/blueprint.py:71
 msgid "Job"
 msgstr "עבודה"
 
-#: app/admin/blueprint.py:71
+#: app/admin/blueprint.py:72
 msgid "First Name"
 msgstr "שם פרטי"
 
-#: app/admin/blueprint.py:72
+#: app/admin/blueprint.py:73
 msgid "Last Name"
 msgstr "שם משפחה"
 
-#: app/admin/blueprint.py:73
+#: app/admin/blueprint.py:74 app/onboarding/forms.py:24
 msgid "Name"
 msgstr "שם"
 
-#: app/admin/blueprint.py:74
+#: app/admin/blueprint.py:75
 msgid "Description"
 msgstr "תיאור"
 
-#: app/admin/blueprint.py:75 app/admin/blueprint.py:125
+#: app/admin/blueprint.py:76 app/admin/blueprint.py:126
 msgid "Jobs"
 msgstr "עבודות"
 
-#: app/admin/blueprint.py:76 app/admin/blueprint.py:133
+#: app/admin/blueprint.py:77 app/admin/blueprint.py:134
+#: app/onboarding/forms.py:28
 msgid "Skills"
 msgstr "כישורים"
 
-#: app/admin/blueprint.py:77
+#: app/admin/blueprint.py:78
 msgid "Level"
 msgstr "הרשאה"
 
-#: app/admin/blueprint.py:78
+#: app/admin/blueprint.py:79
 msgid "Is Active"
 msgstr "פעיל"
 
-#: app/admin/blueprint.py:79
+#: app/admin/blueprint.py:80
 msgid "Events"
 msgstr "אירועים"
 
-#: app/admin/blueprint.py:80
+#: app/admin/blueprint.py:81
 msgid "Recurring"
 msgstr "חוזר"
 
-#: app/admin/blueprint.py:81
+#: app/admin/blueprint.py:82
 msgid "Start Time"
 msgstr "התחלה"
 
-#: app/admin/blueprint.py:82
+#: app/admin/blueprint.py:83
 msgid "End Time"
 msgstr "סיום"
 
-#: app/admin/blueprint.py:83
+#: app/admin/blueprint.py:84
 msgid "Required Skills"
 msgstr "כישורים נדרשים"
 
-#: app/admin/blueprint.py:121
+#: app/admin/blueprint.py:122
 msgid "Volunteers"
 msgstr "מתנדבים"
 
-#: app/admin/blueprint.py:129
+#: app/admin/blueprint.py:130
 msgid "Organizations"
 msgstr "ארגונים"
 
@@ -98,9 +99,13 @@ msgstr "אין לך את הרשאות המתאימות לצפות בעמוד ז�
 msgid "Page not found"
 msgstr "העמוד לא קיים"
 
-#: app/core/templates/404.html:7
+#: app/core/templates/404.html:7 app/core/templates/500.html:7
 msgid "Go back"
 msgstr "חזור לעמוד הבית"
+
+#: app/core/templates/500.html:5
+msgid "Oops. Something went wrong"
+msgstr "משהו השתבש, אנחנו עובדים על זה ברגעים אלה"
 
 #: app/core/templates/t_app.html:12
 msgid "Mitlahateb"
@@ -121,4 +126,8 @@ msgstr "התנתק"
 #: app/onboarding/templates/index.html:4
 msgid "This is a sample content"
 msgstr "זה תוכן לדוגמא"
+
+#: app/onboarding/templates/profile.html:48
+msgid "Save"
+msgstr "שמור"
 

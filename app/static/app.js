@@ -23,3 +23,9 @@ $(function() {
     window.scrollBy(0, -1);
     $("body").show();
 });
+
+$(document).ready(function() {
+  $("[data-role=select2]").select2({
+    theme: "bootstrap"
+  });
+});

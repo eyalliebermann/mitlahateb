@@ -1,3 +1,5 @@
+import logging
+
 from flask import Flask
 from flask.globals import current_app
 from flask.helpers import send_from_directory
@@ -7,6 +9,8 @@ from app.admin import admin_bp
 from app.core.blueprint import core_bp
 from app.extensions import db, migrate
 from app.onboarding import onboarding_bp
+
+logging.basicConfig()
 
 app = Flask(__name__, static_url_path='')
 
