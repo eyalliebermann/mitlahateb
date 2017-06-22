@@ -1,54 +1,9 @@
 import React from 'react';
-import {View, Text, TextInput, TouchableHighlight, StyleSheet, Button, Modal} from 'react-native';
+import {ActivityIndicator, View, Text, TextInput, TouchableHighlight, StyleSheet, Button, Modal} from 'react-native';
 import {NavigationActions} from 'react-navigation';
 import TagInput from 'react-native-taginput';
 
-const submitNavigationAction = NavigationActions.reset({
-    index: 0,
-    actions: [NavigationActions.navigate({routeName: 'Feed'})]
-});
-
-export default class FeedScreen extends React.Component {
-    static defaultProps = {
-        skillOptions: ['Graphic Design', 'Software Development', 'IT', 'Physical Strength']
-    };
-
-     state = {
-    modalVisible: false,
-  }
-
-    constructor(props) {
-        super(props);
-
-        // const {navigation: {state: {params: {profile}}}} = props;
-        // this.state = {
-        //     skills: [],
-        //     ...profile
-        // };
-    }
-
-    linkState = stateName => ({
-        // onChange: e => this.setState({[stateName]: e.nativeEvent.text}),
-        // value: this.state[stateName]
-    });
-
-    handleSubmit = () => {
-        // perform some request to server side with fetch, and then navigate to feed
-      //  this.props.navigation.dispatch(submitNavigationAction);
-    };
-
-    onPressTitle = () =>{
-        this.setModalVisible(true);
-    }
-
-
-setModalVisible(visible) {
-    this.setState({modalVisible: visible});
-  }
-    render() {
-        const {skillOptions} = this.props;
-
-        let taskItems = [{
+ const TASKS = [{
             'id':1,
             'title': 'Hosting a guy in need!',
             'description': 'Host an f2m guy in need tonight! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat aliquet ante, ac suscipit odio consectetur in. Donec elementum nibh id congue venenatis. Etiam mattis et ex non blandit. Donec sed vestibulum neque. Ut egestas odio et sapien volutpat, ac laoreet odio placerat. Maecenas id metus volutpat, scelerisque magna eget, fermentum justo. Fusce quis mauris et elit luctus accumsan. Nunc sed nibh et nisi euismod pharetra. Morbi pretium hendrerit posuere. Aenean congue elit at convallis faucibus.',
@@ -65,7 +20,51 @@ setModalVisible(visible) {
             'when': '2017-06-23' 
         }];
 
-            let tasks = taskItems.map( (task) =>{ return (
+
+const submitNavigationAction = NavigationActions.reset({
+    index: 0,
+    actions: [NavigationActions.navigate({routeName: 'Feed'})]
+});
+
+export default class FeedScreen extends React.Component {
+    constructor(props) {
+        super(props);
+         this.state = {
+            isLoading: true,
+            tasks:TASKS
+        }
+    }
+
+  componentDidMount() {
+    // return fetch('/api/jobs.json')
+    //   .then((response) => response.json())
+    //   .then((responseJson) => {
+    //     this.setState({
+    //       isLoading: false,
+    //       tasks: responseJson,
+    //     }, function() {
+    //       // do something with new state
+    //     });
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+  }
+  
+    onPressTitle = () =>{
+        this.setModalVisible(true);
+    }
+
+
+    setModalVisible(visible) {
+        this.setState({modalVisible: visible});
+    }
+    render() {
+        const {skillOptions} = this.props;
+
+       
+
+            let tasks = this.state.tasks.map( (task) =>{ return (
               <Text key={task.id} style={styles.baseText}>
               <Text style={styles.titleText} onPress={this.onPressTitle}>
                     {task.title}{'\n'}
@@ -81,6 +80,14 @@ setModalVisible(visible) {
                 </Text>
              );
             });
+
+            // if (this.state.isLoading) {
+            //     return (
+            //         <View style={{flex: 1, paddingTop: 20}}>
+            //         <ActivityIndicator />
+            //         </View>
+            //     );
+            //  }
 
         return (
             <View style={styles.view} >
