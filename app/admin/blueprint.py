@@ -1,14 +1,17 @@
 import os
 
 from flask import Blueprint, abort, request
-from flask_admin import Admin
+from flask.helpers import flash
+from flask_admin import Admin, BaseView, expose
+from flask_admin.contrib.sqla.fields import QuerySelectMultipleField
 from flask_admin.contrib.sqla.view import ModelView
 from flask_babelex import Domain
 from flask_login import current_user
+from wtforms import Form, StringField
 
 from app import translations
 from app.core import Organization, db, Job, Skill, Volunteer
-from app.core.blueprint import security_s
+from app.core.blueprint import security_s, volunteer_s, push_s
 
 my_domain = Domain(
     dirname=os.path.dirname(translations.__file__))
@@ -100,7 +103,6 @@ class JobView(CustomView):
     column_list = ['organization', 'name', 'required_skills']
 
 
-
 class OrganizationView(CustomView):
     model = Organization
     view_level = 'admin'
@@ -111,6 +113,43 @@ class SkillView(CustomView):
     model = Skill
     view_level = 'manager'
     edit_level = 'manager'
+
+
+class NotificationsForm(Form):
+    message = StringField(
+        my_domain.lazy_gettext('Message'),
+        validators=[])
+
+    skills = QuerySelectMultipleField(
+        my_domain.lazy_gettext('Skills'),
+        query_factory=lambda: db.session.query(Skill),
+        get_label=lambda x: x.name)
+
+    organizations = QuerySelectMultipleField(
+        my_domain.lazy_gettext('Organizations'),
+        query_factory=lambda: db.session.query(Organization),
+        get_label=lambda x: x.name)
+
+
+class NotificationsView(BaseView):
+    @expose('/', methods=('GET', 'POST'))
+    def index(self):
+        form = NotificationsForm(request.form)
+        if request.method == 'POST' and form.validate():
+            skills = [x.id for x in form.skills.data]
+            organizations = [x.id for x in form.organizations.data]
+
+            tokens = volunteer_s.find_tokens(
+                skills=skills,
+                organizations=organizations)
+
+            push_s.push(
+                tokens=tokens,
+                body=form.message)
+
+            flash(my_domain.gettext('Notifications sent successfully'))
+
+        return self.render('notifications.html', form=form)
 
 
 def add_view(name, view=CustomView):
@@ -135,3 +174,6 @@ add_view(
 add_view(
     name=my_domain.lazy_gettext('Skills'),
     view=SkillView)
+
+admin.add_view(NotificationsView(
+    name=my_domain.lazy_gettext('Send Notifications')))

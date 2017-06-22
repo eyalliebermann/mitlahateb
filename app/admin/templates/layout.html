@@ -20,6 +20,7 @@
     </div>
 </div>
 {% set render_ctx = h.resolve_ctx() %}
+{{ layout.messages() }}
 {% block brand %}{% endblock %}
 {% block body %}{% endblock %}
 {% block tail %}

@@ -5,6 +5,7 @@ from flask_babelex import Babel, get_locale
 from flask_login import LoginManager, logout_user, login_user
 
 from app.core.core import SecurityService
+from app.core.notifications import PushService
 from app.core.service import VolunteerService
 from app.errors import JWTExpiredError, AppError
 
@@ -17,6 +18,7 @@ core_bp = Blueprint(
 
 volunteer_s = VolunteerService()
 security_s = SecurityService(volunteer_s)
+push_s = PushService()
 
 login_manager = LoginManager()
 babel = Babel()
