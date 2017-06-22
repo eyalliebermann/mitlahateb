@@ -4,6 +4,7 @@ Flask==0.12.2
 # frameworks
 Flask-Admin
 Flask-BabelEx
+exponent_server_sdk
 
 # config
 Flask-Env
