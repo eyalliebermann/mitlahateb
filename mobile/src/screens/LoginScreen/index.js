@@ -5,13 +5,18 @@ import {loginWithFacebook} from '../../services/facebookLogin';
 import facebookLogin from './images/continueWithFacebook.png';
 import logo from './images/logo.png';
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
+    const handleLoginPress = async () => {
+        const profile = await loginWithFacebook();
+        navigation.navigate('Profile', {profile});
+    };
+
     return (
         <View style={styles.container}>
             <Image source={logo} resizeMode="contain" style={styles.logo} />
             <Text>Let's get started! Please log in.</Text>
 
-            <TouchableHighlight onPress={loginWithFacebook} style={styles.facebookLoginButton}>
+            <TouchableHighlight onPress={handleLoginPress}>
                 <Image source={facebookLogin} resizeMode="contain" style={styles.facebookLoginButtonImage} />
             </TouchableHighlight>
         </View>
@@ -33,11 +38,8 @@ const styles = StyleSheet.create({
         width: '50%',
         height: '50%'
     },
-    facebookLoginButton: {
-        width: '50%',
-        height: '50%'
-    },
     facebookLoginButtonImage: {
-        width: '75%'
+        width: 280,
+        height: 45
     }
 });
