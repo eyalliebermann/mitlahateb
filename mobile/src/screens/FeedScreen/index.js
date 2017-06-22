@@ -36,7 +36,7 @@ export default class FeedScreen extends React.Component {
     }
 
   componentDidMount() {
-    return fetch('http://whispering-stream-87884.herokuapp.com/api/jobs')
+    return fetch('http://volunteerizer.herokuapp.com/api/jobs')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
