@@ -3,7 +3,7 @@ import {ActivityIndicator, View, Text, TextInput, TouchableHighlight, StyleSheet
 import {NavigationActions} from 'react-navigation';
 import TagInput from 'react-native-taginput';
 
- const TASKS = [{
+ const JOBS = [{
             'id':1,
             'title': 'Hosting a guy in need!',
             'description': 'Host an f2m guy in need tonight! Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent volutpat aliquet ante, ac suscipit odio consectetur in. Donec elementum nibh id congue venenatis. Etiam mattis et ex non blandit. Donec sed vestibulum neque. Ut egestas odio et sapien volutpat, ac laoreet odio placerat. Maecenas id metus volutpat, scelerisque magna eget, fermentum justo. Fusce quis mauris et elit luctus accumsan. Nunc sed nibh et nisi euismod pharetra. Morbi pretium hendrerit posuere. Aenean congue elit at convallis faucibus.',
@@ -31,24 +31,24 @@ export default class FeedScreen extends React.Component {
         super(props);
          this.state = {
             isLoading: true,
-            tasks:TASKS
+            jobs:JOBS
         }
     }
 
   componentDidMount() {
-    // return fetch('/api/jobs.json')
-    //   .then((response) => response.json())
-    //   .then((responseJson) => {
-    //     this.setState({
-    //       isLoading: false,
-    //       tasks: responseJson,
-    //     }, function() {
-    //       // do something with new state
-    //     });
-    //   })
-    //   .catch((error) => {
-    //     console.error(error);
-    //   });
+    return fetch('http://whispering-stream-87884.herokuapp.com/api/jobs')
+      .then((response) => response.json())
+      .then((responseJson) => {
+        this.setState({
+          isLoading: false,
+          jobs: responseJson.jobs,
+        }, function() {
+          // do something with new state
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }
   
     onPressTitle = () =>{
@@ -64,16 +64,16 @@ export default class FeedScreen extends React.Component {
 
        
 
-            let tasks = this.state.tasks.map( (task) =>{ return (
-              <Text key={task.id} style={styles.baseText}>
+            let jobs = this.state.jobs.map( (job) =>{ return (
+              <Text key={job.id} style={styles.baseText}>
               <Text style={styles.titleText} onPress={this.onPressTitle}>
-                    {task.title}{'\n'}
+                    {job.title}{'\n'}
                 </Text>
                 <Text numberOfLines={3}>
-                    {task.description}{'\n'}
+                    {job.description}{'\n'}
                 </Text>
                  <Text>
-                    {task.date}
+                    {job.date}
                 </Text>
                 {'\n'}
                 {'\n'}
@@ -91,7 +91,7 @@ export default class FeedScreen extends React.Component {
 
         return (
             <View style={styles.view} >
-             {tasks}
+             {jobs}
             </View>
             
         );
