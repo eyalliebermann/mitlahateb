@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, Unicode, ForeignKey, Table, String
+from sqlalchemy import Column, Integer, Unicode, ForeignKey, Table, String, DateTime
 from sqlalchemy.orm import relationship
 
 from app.core.core import SqlalchemyUserMixin
@@ -47,7 +47,8 @@ vol_to_job_table = Table(
     'vol_to_job',
     db.Model.metadata,
     Column('volunteer_id', String(64), ForeignKey('volunteer.id')),
-    Column('job_id', Integer, ForeignKey('job.id')))
+    Column('job_id', Integer, ForeignKey('job.id')),
+    Column('add_date', DateTime))
 
 vol_to_skill_table = Table(
     'vol_to_skill',
