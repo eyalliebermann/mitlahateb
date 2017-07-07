@@ -27,4 +27,12 @@
  $ sudo pip install virtualenvwrapper
  ```
  
+ Assuming you're using iTerm with zsh sheel. Add the follwoing line to you ~/.zshrc file
+ ```
+ #python virtualenv setup
+ export WORKON_HOME=~/.virtualenvs
+ export PROJECT_HOME=$HOME/dev
+ source /usr/local/bin/virtualenvwrapper.sh
+ ```
+ 
  
