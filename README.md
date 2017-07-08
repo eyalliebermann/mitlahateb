@@ -27,12 +27,24 @@
  $ sudo pip install virtualenvwrapper
  ```
  
- Assuming you're using iTerm with zsh sheel. Add the follwoing line to you ~/.zshrc file
+ Configure your terminal to use the virtual environment script. Assuming you're using iTerm with zsh sheel. Add the follwoing line to you ~/.zshrc file
  ```
  #python virtualenv setup
  export WORKON_HOME=~/.virtualenvs
  export PROJECT_HOME=$HOME/dev
  source /usr/local/bin/virtualenvwrapper.sh
+ ```
+ Install postgres sql server
+ ```
+ $ brew install postgresql
+ ```
+ Migrate your local database to the latrst schema 
+ ```
+ ```
+ 
+ Start the database service
+ ```
+ pg_ctl -D /usr/local/var/postgres -l logfile start
  ```
  
  
